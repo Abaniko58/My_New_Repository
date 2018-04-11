@@ -1,0 +1,134 @@
+{% extends "admin_base.html" %}
+<div class="container centered">
+{% block title %}
+
+
+{% endblock %}
+
+</div>
+{% block main%}
+
+<form method="POST" action="{{ url_for('tasks.add') }}">
+  {{ form.csrf_token }}
+  <br>
+  <div class="container-fluid centered ">
+    <div class="row">
+      <div class="col-sm">
+        <h4>Новая установка: {{ form.user_id(placeholder="ИД пользователя") }} </h4>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <small class="form-text text-muted">Введите дату установки</small>
+          {{ form.date_inst(placeholder="date dd/mm/yyyy") }}
+          {% if form.date_inst.errors %}
+            <span class="error">
+              {% for error in form.date_inst.errors %}
+                {{ error }}
+              {% endfor %}
+            </span>
+          {% endif %}
+        </div>
+
+          <div class="form-group">
+          <small class="form-text text-muted">Тип:1-спутн,2-поворот,3-инет</small>
+          {{ form.sat_net(placeholder="Sat-1/Net-2") }}
+          {% if form.sat_net.errors %}
+            <span class="error">
+              {% for error in form.sat_net.errors %}
+                {{ error }}
+              {% endfor %}
+            </span>
+          {% endif %}
+          </div>
+
+        <div class="form-group">
+        <small class="form-text text-muted">Спутниковые позиции</small>
+        {{ form.positions(placeholder="Positions") }}
+        {% if form.positions.errors %}
+          <span class="error">
+            {% for error in form.positions.errors %}
+              {{ error }}
+            {% endfor %}
+          </span>
+        {% endif %}
+         </div>
+
+        <div class="form-group">
+          <small class="form-text text-muted">Конвертора: single, twin...</small>
+          {{ form.convertors(placeholder="Convertors") }}
+          {% if form.convertors.errors %}
+            <span class="error">
+              {% for error in form.convertors.errors %}
+                {{ error }}
+              {% endfor %}
+            </span>
+          {% endif %}
+        </div>
+
+    </div>
+    <div class="col">
+
+      <div class="form-group">
+      <small class="form-text text-muted">Марка приемника</small>
+        {{ form.resivers(placeholder="Recivers") }}
+        {% if form.resivers.errors %}
+          <span class="error">
+            {% for error in form.resivers.errors %}
+              {{ error }}
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+      <div class="form-group">
+        <small class="form-text text-muted">Доп. сетевое оборудование</small>
+
+        {{ form.add_net(placeholder="Wifi?") }}
+        {% if form.add_net.errors %}
+          <span class="error">
+            {% for error in form.add_net.errors %}
+              {{ error }}
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+      <div class="form-group">
+        <small  class="form-text text-muted">Доп: Эфирное/Кабельное?</small>
+        {{ form.add_terr(placeholder="Terresterial?") }}
+        {% if form.add_terr.errors %}
+          <span class="error">
+            {% for error in form.add_terr.errors %}
+              {{ error }}
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+      <div class="form-group">
+        <small class="form-text text-muted">Доступ к антеннам</small>
+    {{ form.access(placeholder="Access") }}
+    {%  if form.access.errors %}
+      <span class="error">
+        {% for error in form.access.errors %}
+          {{ error }}
+        {% endfor %}
+      </span>
+    {% endif %}
+  </div>
+  </div>
+   </div>
+   <div class="form-group centered"><input class="btn btn-outline-success" type="submit" value="Регистрация"></div>
+
+
+
+</form>
+  <br>
+
+{% endblock %}
+
+{% block footer %}
+<p> Спутниковое телевидение в еще один дом!</p>
+{% endblock %}

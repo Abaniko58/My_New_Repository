@@ -1,0 +1,54 @@
+{% extends "index3.html" %}
+
+{% block title %}
+<br>
+<a class="btn btn-outline-success" href="/register">Впервые здесь? Нажмите для регистрации</a>
+{% endblock %}
+<br>
+<br>
+
+{% block main %}
+<br>
+    <form class="form-group" role="form" method="post" action="/login/">
+      {{ form.csrf_token }}
+
+ <div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+
+<!--      <div class="form-group mb-2"> -->
+        {{ form.name(placeholder="user name") }}
+        {% if form.name.errors %}
+          <span class="error">
+            {% for error in form.name.errors %}
+              {{ error }}
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+     </div>
+    <div class="col">
+      <div class="form-group">
+      {{ form.password(placeholder="password") }}
+        {% if form.password.errors %}
+          <span class="error">
+            {% for error in form.password.errors %}
+              {{ error }}
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+    </div>
+      <button class="btn btn-sm btn-outline-success mb-2" type="submit">Sign in</button>
+  </div>
+ </div>
+    </form>
+
+{% endblock %}
+
+{% block footer %}
+<div class="container">
+    <img src="/static/img/safe_image.jpg" alt="">
+</div>
+{% endblock %}

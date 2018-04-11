@@ -1,0 +1,77 @@
+{% extends "admin_base.html" %}
+
+{% block title %}
+<br>
+<form class="form-inline centered" method="POST" action="{{ url_for('tasks.instal') }}">
+
+
+  <div class="form-group mx-sm-5 mb-2">
+
+    <label class="sr-only" for="inlineFormCustomSelect">Поиск пользователя по:</label>
+      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="selected_value">
+        <option selected value="1"> Поиск по Типу</option>
+        <option selected value="2">Ресиверу</option>
+        <option selected value="3">Дате установки</option>
+        <option selected value="4">ИД пользователя</option>
+        <option selected value="5">Все установки</option>
+      </select>
+
+  </div>
+
+  <div class="form-group mx-sm-5 mb-2">
+    <label for="inputPassword2" class="sr-only">input</label>
+    <input type="text" name="look" class="form-control" id="inputPassword2" placeholder="Вводите">
+  </div>
+  <button type="submit" class="btn btn-outline-info mb-2">Искать</button>
+
+<div class="form-group mx-sm-5 mb-2">
+     <a class="btn btn-outline-secondary" href="/add/" role="button">Добавить установку</a>
+</div>
+</form>
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid centered">
+    <h5>Установки:</h5>
+<table class="table table-hover table-sm ">
+  <thead>
+    <tr class="table-primary" >
+      <th scope="col">Имя</th>
+      <th scope="col">Адрес</th>
+      <th scope="col">Ид</th>
+      <th scope="col">Дата</th>
+      <th scope="col">Тип установки</th>
+      <th scope="col">Позиции</th>
+      <th scope="col">Конвертора</th>
+      <th scope="col">Приемники</th>
+      <th scope="col">Доп. сетевое</th>
+      <th scope="col">Эфирное/кабельное</th>
+      <th scope="col">Доступ к антенне</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for inst in open_insts %}
+        <tr>
+           <td >{{ inst.poster.fio }}</td>
+          <td >{{ inst.poster.adress }}</td>
+          <td >{{ inst.id_inst }}</td>
+          <td >{{ inst.date_inst }}</td>
+          <td >{{ inst.sat_net }}</td>
+          <td >{{ inst.positions }}</td>
+          <td >{{ inst.convertors }}</td>
+          <td >{{ inst.resivers }}</td>
+          <td >{{ inst.add_net }}</td>
+          <td >{{ inst.add_terr }}</td>
+          <td >{{ inst.access }}</td>
+        </tr>
+      {% endfor %}
+
+  </tbody>
+</table>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

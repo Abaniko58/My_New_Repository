@@ -1,0 +1,64 @@
+{% extends "admin_base.html" %}
+<div class="container centered">
+{% block title %}
+<br>
+<form class="form-inline centered" method="POST" action="{{ url_for('tasks.subscrs') }}">
+  <div class="form-group mx-sm-5 mb-2">
+
+    <label class="sr-only" for="inlineFormCustomSelect">Поиск пользователя по:</label>
+      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="selected_value">
+        <option selected value="1"> По Провайдеру</option>
+        <option selected value="2">По Классу</option>
+        <option selected value="3">Дате начала</option>
+        <option selected value="4">Дате конца</option>
+        <option selected value="5">Все подписки</option>
+      </select>
+
+  </div>
+
+  <div class="form-group mx-sm-5 mb-2">
+    <label for="inputPassword2" class="sr-only">input</label>
+    <input type="text" name="look" class="form-control" id="inputPassword2" placeholder="Вводите">
+  </div>
+  <button type="submit" class="btn btn-outline-info mb-2">Искать</button>
+
+<div class="form-group mx-sm-5 mb-2">
+     <a class="btn btn-outline-secondary" href="/add_subscr/" role="button">Добавить подписку</a>
+</div>
+</form>
+{% endblock %}
+</div>
+{% block main %}
+<div class="container-fluid centered">
+    <h5>Подписки пользователей</h5>
+<table class="table table-hover table-sm ">
+  <thead>
+    <tr class="table-primary" >
+      <th scope="col">Провайдер</th>
+      <th scope="col">Класс подписки</th>
+      <th scope="col">Дата начала</th>
+      <th scope="col">Дата окончания</th>
+      <th scope="col">Стоимость</th>
+      <th scope="col">Баланс</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for subscr in open_subscrs %}
+        <tr>
+          <td >{{ subscr.provider }}</td>
+          <td >{{ subscr.class_subscr }}</td>
+          <td >{{ subscr.date_subscr }}</td>
+          <td >{{ subscr.date_end_subscr }}</td>
+          <td >{{ subscr.costs }}</td>
+          <td >{{ subscr.balance }}</td>
+        </tr>
+      {% endfor %}
+
+  </tbody>
+</table>
+</div>
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

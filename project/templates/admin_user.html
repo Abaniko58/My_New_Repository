@@ -1,0 +1,65 @@
+{% extends "admin_base.html" %}
+
+{% block title %}
+<br>
+<form class="form-inline centered" method="POST" action="{{ url_for('users.admin') }}">
+
+
+  <div class="form-group mx-sm-5 mb-2">
+
+    <label class="sr-only" for="inlineFormCustomSelect">Поиск пользователя по:</label>
+      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="selected_value">
+        <option selected value="1"> Поиск по Имени</option>
+        <option selected value="2">Адресу</option>
+        <option selected value="3">Логин</option>
+        <option selected value="4">ИД пользователя</option>
+        <option selected value="5">Все пользователи</option>
+      </select>
+
+  </div>
+
+  <div class="form-group mx-sm-5 mb-2">
+    <label for="inputPassword2" class="sr-only">input</label>
+    <input type="text" name="look" class="form-control" id="inputPassword2" placeholder="Вводите">
+  </div>
+  <button type="submit" class="btn btn-outline-info mb-2">Искать</button>
+
+<div class="form-group mx-sm-5 mb-2">
+     <a class="btn btn-outline-secondary" href="/register/" role="button">Добавить пользователя</a>
+</div>
+</form>
+
+{% endblock %}
+
+{% block main %}
+
+<table class="table table-hover table-sm ">
+  <thead>
+    <tr class="table-primary" >
+<!--      <th scope="col">#</th> -->
+      <th scope="col">Имя</th>
+      <th scope="col">Адрес</th>
+      <th scope="col">Login</th>
+      <th scope="col">User_id</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for task in open_users %}
+        <tr>
+<!--          <th scope="row">1</th> -->
+          <td >{{ task.fio }}</td>
+          <td >{{ task.adress }}</td>
+          <td >{{ task.name }}</td>
+          <td >{{ task.id }}</td>
+          <td> <a class="btn btn-outline-secondary btn-sm" href="{{ url_for('tasks.info', user_id = task.id) }}" role="button">Инфо</a>
+        </tr>
+      {% endfor %}
+
+  </tbody>
+</table>
+
+{% endblock %}
+
+{% block footer %}
+Вся наша склонность к оптимизму – от неспособности представить, какого рода завтра клизму судьба решила нам поставить.
+{% endblock %}

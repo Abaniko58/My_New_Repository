@@ -1,0 +1,76 @@
+{% extends "ind31.html" %}
+{% block main %}
+  <br>
+  <h2>Установка:{{'  ' + username }}</h2>
+  <div class="datagrid">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col"><strong>Ид</strong></th>
+          <th scope="col"><strong>Дата установки</strong></th>
+          <th scope="col"><strong>Позиции</strong></th>
+          <th scope="col"><strong>Ресивер</strong></th>
+          <th scope="col"><strong>Конвертор</strong></th>
+          <th scope="col"><strong>Доп. оборудование</strong></th>
+          <th scope="col"><strong>Эфирное</strong></th>
+          <th scope="col"><strong>Доступ к антенне</strong></th>
+          <th scope="col"><strong>user</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for task in open_tasks %}
+        <tr>
+          <td> {{ task.id_inst }}</td>
+          <td> {{ task.date_inst }}</td>
+          <td>{{ task.positions }}</td>
+          <td>{{ task.resivers }}</td>
+          <td>{{ task.convertors }}</td>
+          <td>{{ task.add_net }}</td>
+          <td>{{ task.add_terr }}</td>
+          <td>{{ task.access }}</td>
+          <td>{{ task.poster.name }}</td>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+
+<div class="entries">
+  <br>
+  <br>
+  <h2>Подписки:</h2>
+  <div class="datagrid">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+
+          <th scope="col"><strong>Провайдер</strong></th>
+          <th scope="col"><strong>Класс подписки</strong></th>
+          <th scope="col"><strong>Начало подписки</strong></th>
+          <th scope="col"><strong>Конец подписки</strong></th>
+          <th scope="col"><strong>Стоимость</strong></th>
+          <th scope="col"><strong>Баланс</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for subscr in open_subscrs %}
+        <tr>
+          <td >{{ subscr.provider }}</td>
+          <td >{{ subscr.class_subscr }}</td>
+          <td >{{ subscr.date_subscr }}</td>
+          <td >{{ subscr.date_end_subscr }}</td>
+          <td >{{ subscr.costs }}</td>
+          <td >{{ subscr.balance }}</td>
+        </tr>
+      {% endfor %}
+
+
+    </table>
+  </div>
+</div>
+<br>
+<br>
+
+{% endblock %}

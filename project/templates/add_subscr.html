@@ -1,0 +1,109 @@
+{% extends "admin_base.html" %}
+<div class="container centered">
+{% block title %}
+{% endblock %}
+
+</div>
+{% block main%}
+
+<form method="POST" action="{{ url_for('tasks.add_subscr') }}">
+  {{ form.csrf_token }}
+  <br>
+  <div class="container-fluid centered ">
+    <div class="row">
+      <div class="col-sm">
+        <h4>Новая подписка: {{ form.user_id(placeholder="ИД пользователя") }} </h4>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+
+        <div class="form-group">
+        <small class="form-text text-muted">Провайдер</small>
+        {{ form.provider(placeholder="Провайдер") }}
+        {% if form.provider.errors %}
+          <span class="error">
+            {% for error in form.provider.errors %}
+              {{ error }}
+            {% endfor %}
+          </span>
+        {% endif %}
+         </div>
+
+
+        <div class="form-group">
+          <small class="form-text text-muted">Дата начала подписки</small>
+          {{ form.date_subscr(placeholder="date dd/mm/yyyy") }}
+          {% if form.date_subscr.errors %}
+            <span class="error">
+              {% for error in form.date_subscr.errors %}
+                {{ error }}
+              {% endfor %}
+            </span>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <small class="form-text text-muted">Дата конца подписки</small>
+          {{ form.date_end_subscr(placeholder="date dd/mm/yyyy") }}
+          {% if form.date_end_subscr.errors %}
+            <span class="error">
+              {% for error in form.date_end_subscr.errors %}
+                {{ error }}
+              {% endfor %}
+            </span>
+          {% endif %}
+        </div>
+
+    </div>
+    <div class="col">
+
+
+        <div class="form-group">
+          <small class="form-text text-muted">Класс подписки</small>
+          {{ form.class_subscr(placeholder="Subscription") }}
+          {% if form.class_subscr.errors %}
+            <span class="error">
+              {% for error in form.class_subscr.errors %}
+                {{ error }}
+              {% endfor %}
+            </span>
+          {% endif %}
+        </div>
+
+
+      <div class="form-group">
+      <small class="form-text text-muted">Стоимость подписки</small>
+        {{ form.costs(placeholder="Price") }}
+        {% if form.costs.errors %}
+          <span class="error">
+            {% for error in form.costs.errors %}
+              {{ error }}
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+      <div class="form-group">
+        <small class="form-text text-muted">Баланс</small>
+
+        {{ form.balance(placeholder="Balance") }}
+        {% if form.balance.errors %}
+          <span class="error">
+            {% for error in form.balance.errors %}
+              {{ error }}
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+    </div>
+   </div>
+   <div class="form-group centered"><input class="btn btn-outline-success" type="submit" value="Регистрация"></div>
+
+
+
+</form>
+  <br>
+{% endblock %}

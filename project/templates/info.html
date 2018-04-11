@@ -1,0 +1,110 @@
+{% extends "admin_base.html" %}
+
+{% block title %}
+<div class="container-fluid centered">
+    <h5>Информация о пользователе</h5>
+<table class="table table-hover table-sm ">
+  <thead>
+    <tr class="table-primary" >
+<!--      <th scope="col">#</th> -->
+      <th scope="col">User_id</th>
+      <th scope="col">Имя</th>
+      <th scope="col">Адрес</th>
+      <th scope="col">Телефон</th>
+      <th scope="col">Login</th>
+      <th scope="col">e-mail</th>
+      <th scope="col">Role</th>
+      <th scope="col">ИД установки</th>
+      <th scope="col">ИД подписки</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for user in open_users %}
+        <tr>
+          <td >{{ user.id }}</td>
+          <td >{{ user.fio }}</td>
+          <td >{{ user.adress }}</td>
+          <td >{{ user.phone }}</td>
+          <td >{{ user.name }}</td>
+          <td >{{ user.email }}</td>
+          <td >{{ user.role }}</td>
+          <td >{{ user.id_inst }}</td>
+          <td >{{ user.id_subscr }}</td>
+          <td><a class="btn btn-outline-danger btn-sm" href="{{ url_for('users.delete_entry', user_id = user.id) }}" role="button">Удалить?</a>
+          </td>
+          <td><a class="btn btn-outline-primary btn-sm" href="{{ url_for('users.edit_user', user_id = user.id) }}" role="button">Редактор</a>
+          </td>
+
+        </tr>
+      {% endfor %}
+
+  </tbody>
+</table>
+</div>
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid centered">
+    <h5>Установки пользователя</h5>
+<table class="table table-hover table-sm ">
+  <thead>
+    <tr class="table-primary" >
+      <th scope="col">Дата</th>
+      <th scope="col">Тип установки</th>
+      <th scope="col">Позиции</th>
+      <th scope="col">Конвертора</th>
+      <th scope="col">Приемники</th>
+      <th scope="col">Доп. сетевое</th>
+      <th scope="col">Эфирное/кабельное</th>
+      <th scope="col">Доступ к антенне</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for inst in open_insts %}
+        <tr>
+          <td >{{ inst.date_inst }}</td>
+          <td >{{ inst.sat_net }}</td>
+          <td >{{ inst.positions }}</td>
+          <td >{{ inst.convertors }}</td>
+          <td >{{ inst.resivers }}</td>
+          <td >{{ inst.add_net }}</td>
+          <td >{{ inst.add_terr }}</td>
+          <td >{{ inst.access }}</td>
+        </tr>
+      {% endfor %}
+
+  </tbody>
+</table>
+</div>
+{% endblock %}
+
+{% block footer %}
+<div class="container-fluid centered">
+    <h5>Подписки пользователя</h5>
+<table class="table table-hover table-sm ">
+  <thead>
+    <tr class="table-primary" >
+      <th scope="col">Провайдер</th>
+      <th scope="col">Класс подписки</th>
+      <th scope="col">Дата начала</th>
+      <th scope="col">Дата окончания</th>
+      <th scope="col">Стоимость</th>
+      <th scope="col">Баланс</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for subscr in open_subscrs %}
+        <tr>
+          <td >{{ subscr.provider }}</td>
+          <td >{{ subscr.class_subscr }}</td>
+          <td >{{ subscr.date_subscr }}</td>
+          <td >{{ subscr.date_end_subscr }}</td>
+          <td >{{ subscr.costs }}</td>
+          <td >{{ subscr.balance }}</td>
+        </tr>
+      {% endfor %}
+
+  </tbody>
+</table>
+</div>
+{% endblock %}

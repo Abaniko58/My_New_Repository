@@ -1,0 +1,104 @@
+{% extends "admin_base.html" %}
+{% block title %}
+<div class="nttn">
+    <p class = "notation">Для логина и пароля используйте латинские буквы, цифры, символы. Минимальная длина пароля 6 символов</p>
+</div>
+
+{% endblock %}
+
+{% block main %}
+
+<form method="POST" action="/register/">
+  {{ form.csrf_token }}
+
+  <div class="container">
+  <div class="row">
+    <div class="col">
+  <div class="form-group">
+      {{ form.fio(placeholder="Имя/Фамилия") }}
+    {% if form.fio.errors %}
+      <span class="error">
+        {% for error in form.fio.errors %}
+          {{ error }}
+        {% endfor %}
+      </span>
+    {% endif %}
+  </div>
+
+    <div class="form-group">
+    {{ form.adress(placeholder="Адрес") }}
+    {% if form.adress.errors %}
+      <span class="error">
+        {% for error in form.adress.errors %}
+          {{ error }}
+        {% endfor %}
+      </span>
+    {% endif %}
+  </div>
+
+    <div class="form-group">
+    {{ form.phone(placeholder="Телефон") }}
+    {% if form.phone.errors %}
+      <span class="error">
+        {% for error in form.phone.errors %}
+          {{ error }}
+        {% endfor %}
+      </span>
+    {% endif %}
+  </div>
+
+  <div class="form-group">
+    {{ form.name(placeholder="Login") }}
+    {% if form.name.errors %}
+      <span class="error">
+        {% for error in form.name.errors %}
+          {{ error }}
+        {% endfor %}
+      </span>
+    {% endif %}
+  </div>
+
+ </div>
+    <div class="col">
+    <div class="form-group">
+      {{ form.email(placeholder="email address") }}
+      {% if form.email.errors %}
+        <span class="error">
+          {% for error in form.email.errors %}
+            {{ error }}
+          {% endfor %}
+        </span>
+      {% endif %}
+    </div>
+  <div class="form-group">
+    {{ form.password(placeholder="password") }}
+    {% if form.password.errors %}
+      <span class="error">
+        {% for error in form.password.errors %}
+          {{ error }}
+        {% endfor %}
+      </span>
+    {% endif %}
+  </div>
+  <div class="form-group">
+    {{ form.confirm(placeholder="confirm password") }}
+    {% if form.confirm.errors %}
+      <span class="error">
+        {% for error in form.confirm.errors %}
+          {{ error }}
+        {% endfor %}
+      </span>
+    {% endif %}
+  </div>
+  <button class="btn btn-sm btn-outline-secondary" type="submit">Регистрация</button>
+  </div>
+  <br>
+</form>
+
+{% endblock %}
+
+{% block footer %}
+<br>
+<br>
+Крайне просто природа сама разбирается в нашей типичности: чем у личности больше ума, тем печальней судьба этой личности.
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "index3.html" %}
+<div class="container">
+{% block title %}
+ <span>Приветствуем тебя, {{Guest}} </span>
+
+<span>        на нашем сайте.</span>
+{% endblock %}
+</div>
+{% block main%}
+
+    <div class="container-fluid mt-5" style="background-color: #eee;">
+                   <div class="container p-5">
+                         <div class="row">
+                             <div class="col">
+
+                              <h1>Новости News</h1>
+                                <h2>Новости партнеров</h2>
+                                 <ul class="nav navbar-nav navbar-right" type="none">
+                                     <p>XTRA TV - бренд платного спутникового телевидения, который входит в состав одного из крупнейших и влиятельных медиа - холдингов Украины - «Медиа группа Украины».</p>
+                                     <li ><a class="btn btn-outline-secondary btn-sm active" role="button" href="http://xtratv.com.ua/ru/xtramix">Extra TV</a></li>
+                                     <br>
+                                     <p>Спутниковое телевидение Viasat - это качественный телевизионный сигнал, надежное оборудование и круглосуточная поддержка наших клиентов. Viasat предлагает лучшие международные и украинские телеканалы. Мы работаем по всей территории Украины и обеспечиваем доступ к качественному телевизионному продукту в больших городах и в самых отдаленных уголках нашей страны.</p>
+                                     <li ><a class="btn btn-outline-secondary btn-sm active" role="button" href="https://viasat.ua/ru">Viasat UA</a></li>
+                                     <br>
+                                     <p>Спутниковый интернет - это качественный интернет, работающий в любой точке Украины, надежное оборудование и круглосуточная поддержка наших клиентов. Tooway предлагает . Мы работаем по всей территории Украины и обеспечиваем доступ к качественному телевизионному продукту в больших городах и в самых отдаленных уголках нашей страны.</p>
+                                     <li ><a class="btn btn-outline-secondary btn-sm active" role="button" href="http://i-tooway.com.ua/" >Tooway</a></li>
+                                     <br>
+                                 </ul>
+
+                             </div>
+                         </div>
+                   </div>
+     </div>
+
+
+{% endblock %}
+
+{% block footer %}
+<p> Ходят тут всякие. А потом байты пропадают.</p>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "index3.html" %}
+<div class="container">
+{% block title %}
+ <span>Приветствуем тебя, {{Guest}} </span>
+
+<span>        на нашем сайте.</span>
+{% endblock %}
+</div>
+{% block main%}
+
+    <div class="container-fluid mt-4" style="background-color: #eee;">
+
+                         <div class="row">
+                             <div class="col">
+
+                              <h1>Наши контакты:</h1>
+                                 <h3>Тел: +380 50 000 00 00</h3>
+                                 <h3>Факс: +380 60 000 00 00</h3>
+                                 <h3>Рельс:<strong>.- ..-- ... .....</strong></h3>
+                                 <h2>Наш офис находится по адресу:</h2>
+                                 <p>"Наш адрес не дом и не улица,</p>
+                                 <p>наш адрес Советский Союз"</p>
+
+                             </div>
+                             <div class="col">
+                                 <div class="container" >
+                                    <img src="/static/img/gariki.jpg" alt="">
+                                 </div>
+                         </div>
+
+     </div>
+
+
+{% endblock %}
+
+{% block footer %}
+<p> Звонить в рельсу. По понедельникам с утра и до ну его на#.</p>
+{% endblock %}
